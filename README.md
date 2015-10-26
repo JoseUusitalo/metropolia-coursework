@@ -1,10 +1,23 @@
-# My Git Notes v1.2
+# Web-tekniikat TX00CD81-3001
 
-"Detailed" notes showing how to use Git.
+Opintojakson suoritettuaan opiskelija osaa verkkosovellusten rakentamisperiaatteet MVC-arkkitehtuurin mukaisesti ja tuntee sekä tarvittavat asiakas- että palvelinpään tekniikat sekä ymmärtää, kuinka asiakas- ja palvelinpään kommunikointi toteutetaan tietoturvanäkökohdat huomioiden.
 
-## 1.0 Committing Changes
+## Sisältö
+Asiakaspään ohjelmointi:
+- HTML
+- CSS
+- JavaScript
+- JQuery
+- AJAX
+- DOM
 
-Perform the following steps:
+Kommunikointi ja tiedonsiirto
+- HTTP
+- REST
+- JSON ja XML
 
-1. Step 1
-2. Step 2
+Palvelinpään toteutukset:
+- jollain sopivalla kielellä, esim. PHP, Python, Java
+- tietovarastojen käyttö
+
+Web-sovellusten tietoturva 
