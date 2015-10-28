@@ -1,0 +1,50 @@
+/*
+    Document   : web-tekniikat/labs/04 Introduction to CSS3/css/simple.css
+    Created on : 2015-10-28 10:13 AM
+    Author     : joseu
+*/
+ body {
+    font-family: Arial, Verdana, sans-serif;
+    background-color: beige;
+}
+h1, h2 {
+    color: blue;
+    font-weight: bold;
+    border-bottom: 3px dotted navy;
+}
+a {
+    font-family:"Courier New", monospace;
+}
+a:hover {
+    border: 2px dashed blue;
+    padding: 3px;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+h1 {
+    font-size: 4.0em;
+}
+ul, ol {
+    font-size: 0.8em;
+    border: 1px solid orange;
+    padding: 15px 0px 15px 30px;
+    color: darkgray;
+}
+p {
+    padding-left: 30px;
+}
+figcaption {
+    font-size: 0.8em;
+    font-weight: bold;
+}
+p.copyright_notice {
+    font-size: 0.8em;
+}
+#special {
+    font-size: 0.8em;
+    color: yellowgreen;
+    font-style: italic;
+    border-left: 2px solid black;
+    margin-left: 40px;
+    padding-left: 10px;
+}

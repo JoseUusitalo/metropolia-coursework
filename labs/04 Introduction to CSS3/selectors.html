@@ -1,22 +1,33 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Selectors</title>    
+    <title>Selectors</title>
     <link href="css/selectors.css" type="text/css" rel="stylesheet" />
     <meta charset="utf-8" />
 </head>
+
 <body>
     <h1 class="alert">Classes and identifiers.</h1>
 
     <p>This is a regular paragraph.</p>
-    
+
     <p>This is a regular paragraph, too.</p>
-    
+
     <p class="alert">This paragraph belongs to a special group of paragraphs. It is a member of 'alert' class.</p>
-    
+
     <p id="unique">This paragraph should be uniquely formatted. It is assigned an identifier.</p>
-    
+
     <p class="alert">This paragraph is in 'alert' class, too.</p>
-    
+
+    <p class="quote">BASIC (an acronym for Beginner's All-purpose Symbolic Instruction Code) is a family of general-purpose, high-level programming languages whose design philosophy emphasizes ease of use. Versions of BASIC became widespread on microcomputers in the mid-1970s and 1980s. Microcomputers usually shipped with BASIC, often in the machine's firmware. Having an easy-to-learn language on these early personal computers allowed small business owners, professionals, hobbyists, and consultants to develop custom software on computers they could afford.</p>
+    <div class="author">
+        - <a href="https://en.wikipedia.org/wiki/BASIC">Wikipedia article for BASIC</a>
+    </div>
+	<p>Example BASIC program:</p>
+    <pre class="code">10 PRINT "Hello, World"
+20 INPUT "Continue (y/n)?", R$
+30 IF R$="y" THEN GOTO 10</pre>
 </body>
+
 </html>
