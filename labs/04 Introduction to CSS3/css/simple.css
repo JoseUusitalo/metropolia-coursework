@@ -48,3 +48,15 @@ p.copyright_notice {
     margin-left: 40px;
     padding-left: 10px;
 }
+p::first-letter {
+    font-size:1.5em;
+}
+p::first-line {
+    font-weight: bold;
+}
+p::before {
+    content:"Note! ";
+}
+p::after {
+    content: url('../img/tickmark.png');
+}
