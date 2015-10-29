@@ -1,0 +1,57 @@
+/*
+    Document   : web-tekniikat/labs/05 Responsive Layout with CSS3/css/berries.css
+    Created on : 2015-10-29 11:39 AM
+    Author     : joseu
+*/
+ body {
+    font-family: sans-serif;
+    text-align: center;
+}
+h1 {
+    font-size: 6.5em;
+    margin: 0.3em auto 0em auto;
+    font-weight: normal;
+}
+h2 {
+    font-size: 2.3em;
+    margin: 0em auto 0em auto;
+    font-weight: normal;
+}
+p {
+    font-style: italic;
+    margin: 0em;
+	font-size: 1.1em;
+}
+img {
+    margin: 0em auto 0em auto;
+    display: block;
+    border: 3px solid skyblue;
+    margin-bottom: 1em;
+}
+figcaption {
+    font-weight: bold;
+    margin-bottom: 3.8em;
+    font-size: 0.85em;
+}
+.italic {
+    font-style: italic;
+}
+div {
+    margin: 0em auto 0em auto;
+    padding: 1.1em 0em 1.1em 0em;
+    display: block;
+    width: 16em;
+}
+div#blueberry {
+    background-color: lightblue;
+    border-top: 1px solid black;
+}
+div#cloudberry {
+    background-color: mistyrose;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+div#lingonberry {
+    background-color: indianred;
+    border-bottom: 1px solid black;
+}

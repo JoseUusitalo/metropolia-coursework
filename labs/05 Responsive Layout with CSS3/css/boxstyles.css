@@ -1,0 +1,24 @@
+/*
+    Document   : web-tekniikat/labs/05 Responsive Layout with CSS3/css/boxmodel.css
+    Created on : 2015-10-29 11:14 AM
+    Author     : joseu
+*/
+ p.one {
+    border: 1px solid black;
+    padding: 3em;
+    margin: 1em;
+    margin-bottom: 0em;
+}
+p.two {
+    border: 1px solid black;
+    margin: 0em 5em 5em 5em;
+}
+p.three {
+    border-left: 3px solid black;
+    padding: 0em 1em 1em 1em;
+    margin-top: 2em 0em 8em 0em;
+}
+p.four {
+    border: 5px dashed red;
+    border-radius: 1em;
+}
