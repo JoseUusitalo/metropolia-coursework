@@ -1,0 +1,13 @@
+/*
+    Document   : web-tekniikat/labs/05 Responsive Layout with CSS3/css/columnstyles.css
+    Created on : 2015-10-29 01:21 PM
+    Author     : joseu
+*/
+ p {
+	 
+    /*
+      Does not work on Firefox 41.0.2
+      column-count: 2;
+     */
+    -moz-column-count: 2;
+}
