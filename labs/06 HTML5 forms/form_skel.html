@@ -1,63 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-	<!--
+<!--
 	This page demonstrates a form.
 	-->
-	<head>
-		<meta charset="utf-8"/>
-		<title>Demonstrating HTML forms</title>
-	</head>
-	
-	<body>
-		<h1>Turnitin</h1>
-		<form  lang="fi" action="">
-			<div>
-				Name: <input type="text" name="studentname"/>
-			</div>
-			<div>
-				Student id: <input type="text" name="id"  />
-			</div>
-			<div>
-				Email:
-				<!--
-				Make an input named "email"
-				-->
-			</div>
-			<div>
-				Assignment:
-				<!--
-				Make an input named "assignment"
-				-->
-				
-			</div>
 
-			<div>
-				Code:
-				<!--
-				Make an input named "code" which is a text area to put student's code into.
-				-->
-				
-			</div>
-			<div>
-				Cheat:
-			<!--
-				Make an input named "cheat" which is a check box the student must check.
-			-->
-			</div>
-			<div>
-				Pay:
-			<!--
-				Make an input named "payment" which is a radio box with possible values of visa, paypal, mastercard
-			-->
-			</div>
-			<div>
-				Score:
-			<!--
-				Make an input named "score" which is a list of choices for the score 
-			-->
-			</div>
-			<input type="submit" />
-		</form>
-		<a href="http://jigsaw.w3.org/css-validator/check/referer">Validate</a>
-	</body>
+<head>
+    <meta charset="utf-8" />
+    <title>Demonstrating HTML forms</title>
+</head>
+
+<body>
+    <h1>Turnitin</h1>
+    <form lang="fi" action="">
+        <div>
+            Name:
+            <input type="text" name="studentname" required title="Syötä etunimesi ja sukunimesi" />
+        </div>
+        <div>
+            Student ID:
+            <input type="number" name="id" required title="Syötä opiskelijanumerosi" />
+        </div>
+        <div>
+            Email:
+            <input type="email" name="email" required title="Syötä sähköpostiosoitteesi" />
+        </div>
+        <div>
+            Assignment:
+            <input type="text" name="assignment" required title="Syötä tehtävän nimi" />
+        </div>
+
+        <div>
+            Code:
+            <input type="text" name="code" required title="Syötä tehtävän koodi" />
+        </div>
+        <div>
+            Cheat:
+            <input type="checkbox" name="cheat" />
+        </div>
+        <div>
+            Pay:
+            <label>
+                <input type="radio" name="payment" value="visa">Visa</label>
+            <label>
+                <input type="radio" name="payment" value="paypal">PayPal</label>
+            <label>
+                <input type="radio" name="payment" value="mastercard">MasterCard</label>
+        </div>
+        <div>
+            Score:
+            <select name="score">
+                <option value="pass">1/5</option>
+                <option value="average">3/5</option>
+                <option value="good">5/5</option>
+            </select>
+        </div>
+        <input type="submit" />
+    </form>
+    <a href="http://jigsaw.w3.org/css-validator/check/referer">Validate</a>
+</body>
+
 </html>
