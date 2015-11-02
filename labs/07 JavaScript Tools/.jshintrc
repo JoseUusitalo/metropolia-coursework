@@ -1,0 +1,4 @@
+"globals": {
+    "console": false,
+    "document": false
+}
