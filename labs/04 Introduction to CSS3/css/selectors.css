@@ -12,8 +12,8 @@ h1.alert {
 }
 p#unique {
     font-size: 0.8em;
-}
-.alert {
+}	
+p:nth-child(even) {
     text-decoration: underline;
 }
 .author {
