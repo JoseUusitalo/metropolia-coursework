@@ -2,7 +2,6 @@ body {
     font-family: Arial, Verdana, sans-serif;
 }
 nav ul {
-    font-size: 1.2em;
     color: white;
     font-weight: bold;
     /*border: 1px solid blue;*/
@@ -11,6 +10,7 @@ nav ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
+    font-size: 1.2em;
 }
 nav ul li {
     background-color: olivedrab;
@@ -19,28 +19,33 @@ nav ul li {
     float: left;
     width: 10%;
     margin: 0;
-    padding: 0;
+    padding: 0.3em 0 0.3em 0.5em;
 }
 nav ul li ul {
     position: absolute;
-    /*width: 100%;*/
+    width: 4.5em;
     visibility: hidden;
     text-align: left;
     /*border: 1px solid yellow;*/
     border-left: 3px solid black;
     border-right: 3px solid black;
     border-bottom: 3px solid black;
-    margin: 0;
-    padding: 0;
+    margin: 0.3em 0 0 0;
+    padding: 0 1.5em 0 0.25em;
+    color: black;
+    font-weight: normal;
+    overflow: visible;
+    font-size: 1em;
 }
 nav ul li ul li {
-    /*border: 1px solid purple;*/
-    float: none;
+    /* border: 1px solid purple; */
+    float: left;
     margin: 0;
     padding: 0;
     text-align: left;
     background-color: transparent;
-    width: 100%
+    width: 100%;
+    overflow: visible;
 }
 nav ul li ul li a {
     text-decoration: none;
@@ -48,6 +53,39 @@ nav ul li ul li a {
     color: black;
     font-weight: normal;
 }
+nav ul li ul li ul {
+    position: absolute;
+    width: 6em;
+    visibility: hidden;
+    text-align: left;
+    border-left: 0;
+    border-right: 3px solid black;
+    border-bottom: 3px solid black;
+    background-color: white;
+    margin: -1.2em 0 0 4em;
+    padding: 0;
+    font-size: 1em;
+}
+nav ul li ul li ul li {
+    /*border: 1px solid red;*/
+    float: none;
+    margin: 0;
+    padding: 0 0 0 1em;
+    text-align: left;
+    background-color: transparent;
+    width: 100%
+}
+nav ul li ul li ul li a {
+    text-decoration: none;
+    text-align: left;
+    color: black;
+    font-weight: normal;
+    padding: 0;
+    margin: 0;
+}
 nav ul li:hover > ul {
+    visibility:visible;
+}
+nav ul li ul li:hover > ul {
     visibility:visible;
 }
