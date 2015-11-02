@@ -1,31 +1,53 @@
-
-
 body {
     font-family: Arial, Verdana, sans-serif;
 }
-
 nav ul {
+    font-size: 1.2em;
+    color: white;
+    font-weight: bold;
+    /*border: 1px solid blue;*/
     list-style: none;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 }
-
 nav ul li {
+    background-color: olivedrab;
+    /*border: 1px solid red;*/
+    text-align: left;
     float: left;
     width: 10%;
-    text-align: center;
+    margin: 0;
+    padding: 0;
 }
-
 nav ul li ul {
-    visibility: hidden;
     position: absolute;
+    /*width: 100%;*/
+    visibility: hidden;
+    text-align: left;
+    /*border: 1px solid yellow;*/
+    border-left: 3px solid black;
+    border-right: 3px solid black;
+    border-bottom: 3px solid black;
+    margin: 0;
+    padding: 0;
 }
-
 nav ul li ul li {
+    /*border: 1px solid purple;*/
     float: none;
-    margin-left: 0px;
-    width: 100%;
-    text-align: center;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    background-color: transparent;
+    width: 100%
 }
-
+nav ul li ul li a {
+    text-decoration: none;
+    text-align: left;
+    color: black;
+    font-weight: normal;
+}
 nav ul li:hover > ul {
     visibility:visible;
 }
