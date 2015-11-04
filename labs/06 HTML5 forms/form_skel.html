@@ -15,7 +15,7 @@
     <form id="main" lang="fi" action="">
         <div>
             Name:
-            <input type="text" name="studentname" placeholder="Full Name" pattern="^(.*?) (.*?)$" required title="Syötä etunimesi ja sukunimesi" />
+            <input type="text" name="studentname" placeholder="Full Name" pattern="^[^<>!%?+|$#%=]+ [^<>!%?+|$#%=]+$" required title="Syötä etunimesi ja sukunimesi" />
         </div>
         <div>
             Student ID:
@@ -23,7 +23,7 @@
         </div>
         <div>
             Email:
-            <input type="email" name="email" placeholder="something@other.net" pattern="^[a-zA-Z0-9-.]*\@[a-zA-Z0-9-]*\.[a-zA-Z]*$" required title="Syötä sähköpostiosoitteesi" />
+            <input type="email" name="email" placeholder="something@other.net" pattern="^[a-zA-Z0-9-.]+\@[a-zA-Z0-9-]+\.[a-zA-Z]+$" required title="Syötä sähköpostiosoitteesi" />
         </div>
         <div>
             Assignment:
