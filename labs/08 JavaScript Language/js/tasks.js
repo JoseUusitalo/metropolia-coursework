@@ -2,9 +2,8 @@
 // This script manages a to-do list.
 // Need a global variable:
 var tasks = [];
-// Function called when the form is submitted.
-// Function adds a task to the global array.
 
+// Making the list update a separate function reduces duplicate code.
 function updateList() {
     var output = document.getElementById('output');
     // Update the page:
@@ -16,6 +15,8 @@ function updateList() {
     output.innerHTML = message;
 }
 
+// Function called when the form is submitted.
+// Function adds a task to the global array.
 function addTask() {
     'use strict';
     // Get the task:
