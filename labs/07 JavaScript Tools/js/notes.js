@@ -5,6 +5,7 @@ var document;
 var button;
 var console;
 var localStorage;
+var window;
 
 function displayList() {
     var table = document.getElementById('list');
@@ -22,6 +23,18 @@ function displayList() {
     }
 }
 
+function saveList() {
+    localStorage.notes = JSON.stringify(notes);
+}
+
+function loadList() {
+    console.log('loadList');
+    if (localStorage.notes) {
+        notes = JSON.parse(localStorage.notes);
+        displayList();
+    }
+}
+
 function addItem() {
     textbox = document.getElementById('item');
     var itemText = textbox.value;
@@ -29,38 +42,33 @@ function addItem() {
     textbox.value = '';
     textbox.focus();
     var i;
-    for(i = 0; i < notes.length; i += 1) {
+    for (i = 0; i < notes.length; i += 1) {
         if(notes[i].title === itemText) {
             notes[i].quantity += 1;
             old = true;
             break;
         }
     }
-    if(!old) {
+    if (!old) {
         var newItem = {
             title: itemText,
             quantity: 1
         };
         notes.push(newItem);
     }
+    saveList();
     displayList();
 }
 
 function deleteIndex(i) {
     notes.splice(i, 1);
+    saveList();
     displayList();
 }
 
-function saveList() {
-    localStorage.notes = JSON.stringify(notes);
+function init() {
+    loadList();
 }
-
-function loadList() {
-    console.log('loadList');
-    if(localStorage.notes) {
-        notes = JSON.parse(localStorage.notes);
-        displayList();
-    }
-}
+window.onload = init;
 button = document.getElementById('add');
 button.onclick = addItem;
