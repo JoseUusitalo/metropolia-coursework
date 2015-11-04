@@ -1,25 +1,45 @@
 <!doctype html>
 <html>
+
 <head>
-  <meta charset="utf-8">
-  <title> JSON </title>
-  <script>
-
-var fidoString = '{ "name": "Fido", "breed": "Mixed", "weight": 38 }';
-var fido = JSON.parse(fidoString);
-console.log("We have made a dog out of a string! " + fido.name);
-
-
-var fido2 = {
-	name: "Fido",
-	breed: "Mixed",
-	weight: 38
-};
-var fidoString = JSON.stringify(fido2);
-console.log("We made a string from a dog! " + fidoString);
-
-  </script>
+    <meta charset="utf-8">
+    <title>JSON</title>
+    <script>
+        var fidoString = '{ "name": "Fido", "breed": "Mixed", "weight": 38 }';
+        var fido = JSON.parse(fidoString);
+        console.log("We have made a dog out of a string! " + fido.name);
+        var fido2 = {
+            name: "Fido",
+            breed: "Mixed",
+            weight: 38
+        };
+        var fidoString = JSON.stringify(fido2);
+        console.log("We made a string from a dog! " + fidoString);
+        var employee = {
+            name: {
+                first: "Colin",
+                second: "Stephen"
+            },
+            title: "Assistant Lecturer"
+        };
+        var myString = JSON.stringify(employee);
+        var window, document;
+        window.onload = function () {
+            "use strict";
+            var div = document.createElement("div");
+            div.innerHTML = myString;
+            document.body.appendChild(div);
+            var div2 = document.createElement("div");
+            var eName = "John";
+            var e = JSON.parse(myString);
+            e.name.first = eName;
+            div2.innerHTML = JSON.stringify(e);
+            document.body.appendChild(div2);
+        };
+    </script>
 </head>
+
 <body>
 </body>
+
 </html>
