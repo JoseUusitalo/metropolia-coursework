@@ -15,15 +15,15 @@
     <form id="main" lang="fi" action="">
         <div>
             Name:
-            <input type="text" name="studentname" placeholder="Full Name" required title="Syötä etunimesi ja sukunimesi" />
+            <input type="text" name="studentname" placeholder="Full Name" pattern="^(.*?) (.*?)$" required title="Syötä etunimesi ja sukunimesi" />
         </div>
         <div>
             Student ID:
-            <input type="number" name="id" placeholder="0000000" required title="Syötä opiskelijanumerosi" />
+            <input type="text" name="id" placeholder="0000000" pattern="^\d{7,7}$" required title="Syötä opiskelijanumerosi" />
         </div>
         <div>
             Email:
-            <input type="email" name="email" placeholder="something@other.net" required title="Syötä sähköpostiosoitteesi" />
+            <input type="email" name="email" placeholder="something@other.net" pattern="^[a-zA-Z0-9-.]*\@[a-zA-Z0-9-]*\.[a-zA-Z]*$" required title="Syötä sähköpostiosoitteesi" />
         </div>
         <div>
             Assignment:
@@ -32,7 +32,7 @@
 
         <div>
             Code:
-            <input type="text" name="code" placeholder="[A0-Z9]" required title="Syötä tehtävän koodi" />
+            <input type="text" name="code" placeholder="[A0-Z9]" pattern="^[A-Z][0-9]$" required title="Syötä tehtävän koodi muodossa: <iso kirjain><numero>" />
         </div>
         <div>
             Cheat:
