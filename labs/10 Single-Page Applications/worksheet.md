@@ -5,8 +5,11 @@ This week you will be modifying the content of the web browser through manipulat
 ## Task List
 
 Aim to complete these in roughly 30-60 minutes of lab time.
+
 1. Use a range of event handlers to access data from a simple form and display it in html tags.
+
 2. Take a complex JavaScript object containing arrays and objects and display the data in the web browser.
+
 3. Take an existing SPA and make improvements to it.
 
 ## Resources
@@ -17,7 +20,7 @@ One of the most useful resources is the Mozilla JS Tutorial. You should read thi
 
 In this task you will write code to respond to a series of events. The code will access data contained within a form and display it in HTML tags.
 
-1. Open the Codio project containing the lab code (see the previous lab) and open the file  simple_dom.html  from  /labs/03 Single-Page Applications/ 
+1. Open the Codio project containing the lab code (see the previous lab) and open the file  simple_dom.html  from  /labs/10 Single-Page Applications/ 
 2. Use the  Current File (static)  button to test out what the page does. Make sure you open the Chrome Developer Tools at the Console tab.
 3. Open the associated JS file  js/simple_dom.js  and check you understand how it works.
 
