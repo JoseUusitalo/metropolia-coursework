@@ -7,22 +7,23 @@
 <head>
     <meta charset="utf-8" />
     <title>Demonstrating HTML forms</title>
+    <link href="form.css" type="text/css" rel="stylesheet" />
 </head>
 
 <body>
     <h1>Turnitin</h1>
-    <form lang="fi" action="">
+    <form id="main" lang="fi" action="">
         <div>
             Name:
-            <input type="text" name="studentname" required title="Syötä etunimesi ja sukunimesi" />
+            <input type="text" name="studentname" placeholder="Full Name" required title="Syötä etunimesi ja sukunimesi" />
         </div>
         <div>
             Student ID:
-            <input type="number" name="id" required title="Syötä opiskelijanumerosi" />
+            <input type="number" name="id" placeholder="0000000" required title="Syötä opiskelijanumerosi" />
         </div>
         <div>
             Email:
-            <input type="email" name="email" required title="Syötä sähköpostiosoitteesi" />
+            <input type="email" name="email" placeholder="something@other.net" required title="Syötä sähköpostiosoitteesi" />
         </div>
         <div>
             Assignment:
@@ -31,20 +32,25 @@
 
         <div>
             Code:
-            <input type="text" name="code" required title="Syötä tehtävän koodi" />
+            <input type="text" name="code" placeholder="[A0-Z9]" required title="Syötä tehtävän koodi" />
         </div>
         <div>
             Cheat:
             <input type="checkbox" name="cheat" />
         </div>
         <div>
-            Pay:
-            <label>
-                <input type="radio" name="payment" value="visa">Visa</label>
-            <label>
-                <input type="radio" name="payment" value="paypal">PayPal</label>
-            <label>
-                <input type="radio" name="payment" value="mastercard">MasterCard</label>
+            <fieldset>
+                <legend>Pay with:</legend>
+                <label>
+                    <input type="radio" name="payment" value="visa">Visa</label>
+                <br>
+                <label>
+                    <input type="radio" name="payment" value="paypal">PayPal</label>
+                <br>
+                <label>
+                    <input type="radio" name="payment" value="mastercard">MasterCard</label>
+                <br>
+            </fieldset>
         </div>
         <div>
             Score:
