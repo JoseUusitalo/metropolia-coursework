@@ -1,52 +1,62 @@
 /**
- * Created with Web-tekniikat.
- * User: joseu
- * Date: 2015-11-04
- * Time: 02:32 PM
+ * Created with Web-tekniikat. User: joseu Date: 2015-11-04 Time: 02:32 PM
  */
+var document, console, window, httpRequest;
 
-function check() {
-    var httpRequest;
-    var testUrl = document.getElementById('urlBox').value;
-    // Use Github Gist when no web server is available
-    // var testUrl = 'https://gist.githubusercontent.com/c0lin/571d38b984d41b44aacf/raw/story.json';
-    makeRequest(testUrl);
+function showStatus() {
+	"use strict";
+	console.log("Ready state: " + httpRequest.readyState);
+	if (httpRequest.readyState === 4) {
+		console.log("Alerting!");
+		if (httpRequest.status === 404) {
+			alert("Site is down or doesn't exists.");
+		} else {
+			alert("Site is up. (" + httpRequest.status + ")");
+		}
+	} else {
+		console.log("Not ready yet!");
+	}
 }
 
 function makeRequest(url) {
-    if(window.XMLHttpRequest) { // Mozilla, Safari, ...
-        httpRequest = new XMLHttpRequest();
-    } else if(window.ActiveXObject) { // IE
-        try {
-            httpRequest = new ActiveXObject("Msxml2.XMLHTTP");
-        } catch(e) {
-            try {
-                httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
-            } catch(e) {}
-        }
-    }
-    if(!httpRequest) {
-        alert('Giving up :( Cannot create an XMLHTTP instance');
-        return false;
-    }
-    // set a callback function for when the httpRequest completes
-    httpRequest.onreadystatechange = alertContents;
-    // now do the actual AJAX request
-    httpRequest.open('GET', url);
-    httpRequest.send();
+	"use strict";
+	console.log("Making a request...");
+	if (window.XMLHttpRequest) { // Mozilla, Safari, ...
+		httpRequest = new XMLHttpRequest();
+	} else if (window.ActiveXObject) { // IE
+		try {
+			httpRequest = new ActiveXObject("Msxml2.XMLHTTP");
+		} catch (ex) {
+			console.log(ex.name + ": " + ex.message);
+			try {
+				httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+			} catch (ex2) {
+				alert(ex2);
+			}
+		}
+	}
+	if (!httpRequest) {
+		alert("Giving up. Cannot create an XMLHTTP instance");
+		return false;
+	}
+	// Callback function on complete
+	httpRequest.onreadystatechange = showStatus;
+	// AJAX request
+	console.log("Sending GET...");
+	httpRequest.open("GET", url);
+	httpRequest.send();
+	return false;
 }
-// the callback
-// this will be run when the request completes (see above)
 
-function alertContents() {
-    if(httpRequest.readyState === 4) {
-        if(httpRequest.status === 200) {
-            alert(httpRequest.responseText);
-        } else {
-            alert('There was a problem with the request.');
-        }
-    }
+function check() {
+	"use strict";
+	var testUrl = "http://cors.io/?u=" + document.getElementById('urlBox').value;
+	console.log("Checking URL: " + testUrl);
+	makeRequest(testUrl);
+	console.log("Request made.");
 }
-window.onload = function () {
-    document.getElementById('check').onsubmit = check;
+window.onload = function() {
+	"use strict";
+	document.getElementById('main').onsubmit = check;
+	console.log("Assigned function to submit button.");
 };
