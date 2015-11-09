@@ -1,15 +1,20 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<title>Click me!</title>
-<style> 
-	body, button { margin: 10px; } 
-	div { padding: 10px; }
-</style>
-<script>
 
-/*
+<head>
+    <meta charset="utf-8">
+    <title>Click me!</title>
+    <style>
+        body, button {
+            margin: 10px;
+        }
+        div {
+            padding: 10px;
+        }
+    </style>
+    <script>
+        var window, document;
+        /*
 //
 // The version without the closure...
 //
@@ -26,27 +31,51 @@ function handleClick() {
 	div.innerHTML = message + count + " times!";
 }
 */
+         //
+         // The version with the closure.
+         //
+        window.onload = function () {
+            "use strict";
+            var count = 0;
+            var message = "You clicked me ";
+            var div = document.getElementById("message");
+            var button = document.getElementById("clickme");
+            button.onclick = function () {
+                count += 1;
+                div.innerHTML = message + count + " times!";
+            };
+            var speed = 0;
+            var msg = document.getElementById("playbackSpeed");
+            var controls = document.getElementById("controls");
+            var plus = document.getElementById("plus");
+            var zero = document.getElementById("zero");
+            var minus = document.getElementById("minus");
+            controls.onclick = function () {
+                msg.innerHTML = "Playback Speed: " + speed;
+            };
+            plus.onclick = function () {
+                speed += 1;
+            };
+            zero.onclick = function () {
+                speed = 0;
+            };
+            minus.onclick = function () {
+                speed -= 1;
+            };
+        };
+    </script>
+</head>
 
-//
-// The version with the closure.
-//
-window.onload = function() {
-	var count = 0; 
-	var message = "You clicked me ";
-	var div = document.getElementById("message");
-
-	var button = document.getElementById("clickme");
-	button.onclick = function() {
-		count++;
-		div.innerHTML = message + count + " times!";
-	};
-};
-
-</script> 
-</head> 
 <body>
-	<button id="clickme">Click me!</button>
-	<div id="message"></div>
+    <button id="clickme">Click me!</button>
+    <div id="message"></div>
+    <div id="controls">
+        <button id="plus">+</button>
+        <button id="zero">0</button>
+        <button id="minus">-</button>
+    </div>
+    <div id="playbackSpeed"></div>
 </body>
+
 </html>
 

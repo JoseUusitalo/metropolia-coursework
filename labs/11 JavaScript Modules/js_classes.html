@@ -1,50 +1,109 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<title>Coffee Constructor</title>
-<script>
+    <meta charset="utf-8">
+    <title>Coffee Constructor</title>
+    <script>
+        "use strict";
+        var console;
 
-function Coffee(roast, ounces) {
-	this.roast = roast;
-	this.ounces = ounces;
-	this.getSize = function() {
-		if (this.ounces === 8) {
-			return "small";
-		} else if (this.ounces === 12) {
-			return "medium";
-		} else if (this.ounces === 16) {
-			return "large";
-		}
-	};
-	this.order = function() {
-		var msg;
-		switch (this.getSize()) {
-			case "small":
-			case "medium":
-			case "large":
-				msg = "You've ordered a " + this.getSize() + " " + this.roast + " coffee.";
-				break;
-			default:
-				msg = "We don't have a " + this.roast + " in that size!";
-				break;
-		}
-		return msg;
-	};
-}
+        function Coffee(roast, ounces) {
+            this.roast = roast;
+            this.ounces = ounces;
+            this.getSize = function () {
+                if(this.ounces === 8) {
+                    return "small";
+                }
+                if(this.ounces === 12) {
+                    return "medium";
+                }
+                if(this.ounces === 16) {
+                    return "large";
+                }
+            };
+            this.order = function () {
+                var msg;
+                switch(this.getSize()) {
+                case "small":
+                case "medium":
+                case "large":
+                    msg = "You've ordered a " + this.getSize() + " " + this.roast + " coffee.";
+                    break;
+                default:
+                    msg = "We don't have a " + this.roast + " in that size!";
+                    break;
+                }
+                return msg;
+            };
+        }
 
-var coffee = new Coffee("House Blend", 12);
-console.log(coffee.order());
-
-var darkRoast = new Coffee("Dark Roast", 16);
-console.log(darkRoast.order());
-
-var specialBlend = new Coffee("Special Blend", 200);
-console.log(specialBlend.order());
-
-</script>
+        function Tea(type, ounces) {
+            this.type = type;
+            this.ounces = ounces;
+            this.getSize = function () {
+                if(this.ounces === 8) {
+                    return "small";
+                }
+                if(this.ounces === 12) {
+                    return "medium";
+                }
+                if(this.ounces === 16) {
+                    return "large";
+                }
+            };
+            this.getSteepTime = function () {
+                switch(this.type.toLocaleLowerCase()) {
+                case "white":
+                    return 2;
+                case "black":
+                    return 3;
+                case "herbal":
+                    return 5;
+                default:
+                    console.log("Unknown tea type!");
+                }
+            };
+            this.order = function () {
+                var msg;
+                switch(this.getSize()) {
+                case "small":
+                case "medium":
+                case "large":
+                    msg = "You have ordered a " + this.getSize() + " " + this.type + " tea, please wait for " + this.getSteepTime() + " minutes.";
+                    break;
+                default:
+                    msg = "Pardon sir/madam, we do not have a serving of " + this.type + " tea in that size. Perhaps you would like to try something else?";
+                    break;
+                }
+                return msg;
+            };
+        }
+        Coffee.prototype.sip = function () {
+            console.log("Hmmm, tasty.");
+        };
+        Tea.prototype.sip = function () {
+            console.log("My my! What a delightfully jolly cup o' tea!");
+        };
+        var coffee = new Coffee("House Blend", 12);
+        console.log(coffee.order());
+        var darkRoast = new Coffee("Dark Roast", 16);
+        console.log(darkRoast.order());
+        var specialBlend = new Coffee("Special Blend", 200);
+        console.log(specialBlend.order());
+        var tea1 = new Tea("White", 12);
+        console.log(tea1.order());
+        var tea2 = new Tea("Black", 18);
+        console.log(tea2.order());
+        var tea3 = new Tea("Herbal", 8);
+        console.log(tea3.order());
+        darkRoast.sip();
+        tea1.sip();
+    </script>
 </head>
+
 <body>
 </body>
+
 </html>
 
