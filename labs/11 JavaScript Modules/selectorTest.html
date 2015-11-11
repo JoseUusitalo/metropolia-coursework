@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Custom selector test</title>
+</head>
+
+<body>
+    <div id="hello">
+    </div>
+</body>
+<script src="selector.js"></script>
+<script>
+    console.log("selector loaded, looking for hello")
+    var div = finder.id("hello");
+    console.log("found: " + typeof div + " | " + div)
+    div.innerHTML = "Hello World";
+</script>
+
+</html>
