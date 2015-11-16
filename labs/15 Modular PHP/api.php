@@ -1,46 +1,60 @@
-<html>
- <body>
-
 <?php
+// This is the API, 2 possibilities: show the app list or show a specific app by id.
+// This would normally be pulled from a database but for demo purposes, I will be hardcoding the return values.
 
-$server = $_SERVER['HTTP_HOST'];
-
-if (isset($_GET["action"]) && isset($_GET["id"]) && $_GET["action"] == "get_app") 
+function get_app_by_id($id)
 {
-  $app_info = file_get_contents('http://'.$server.'/api.php?action=get_app&id=' . $_GET["id"]);
-  $app_info = json_decode($app_info, true);
-  ?>
-    <table>
-      <tr>
-        <td>App Name: </td><td> <?php echo $app_info["app_name"] ?></td>
-      </tr>
-      <tr>
-        <td>Price: </td><td> <?php echo $app_info["app_price"] ?></td>
-      </tr>
-      <tr>
-        <td>Version: </td><td> <?php echo $app_info["app_version"] ?></td>
-      </tr>
-    </table>
-    <br />
-     
-    <a href="http://<?php echo $server?>/REST_Client.php?action=get_app_list" alt="app list">Return to the app list</a> 
-  <?php
+  $app_info = array();
+
+  // normally this info would be pulled from a database.
+  // build JSON array.
+  switch ($id){
+    case 1:
+      $app_info = array("app_name" => "Web Demo", "app_price" => "Free", "app_version" => "2.0"); 
+      break;
+    case 2:
+      $app_info = array("app_name" => "Audio Countdown", "app_price" => "Free", "app_version" => "1.1");
+      break;
+    case 3:
+      $app_info = array("app_name" => "The Tab Key", "app_price" => "Free", "app_version" => "1.2");
+      break;
+    case 4:
+      $app_info = array("app_name" => "Music Sleep Timer", "app_price" => "Free", "app_version" => "1.9");
+      break;
+  }
+
+  return $app_info;
 }
-else // else take the app list
+
+function get_app_list()
 {
-    
-  $app_list = file_get_contents('http://'.$server.'/api.php?action=get_app_list');
-  $app_list = json_decode($app_list, true);
-  //var_dump($app_list);
-  ?>
-    <ul>
-     <?php  foreach ($app_list as $app) { ?>
-      <li>
-        <a href=<?php echo "http://$server/REST_Client.php?action=get_app&id=" . $app["id"]  ?> alt=<?php echo "app_" . $app["id"] ?>><?php echo $app["name"] ?></a>
-      </li>
-     <?php } ?>
-    </ul>
-  <?php
-} ?>
- </body>
-</html>
+  //normally this info would be pulled from a database.
+  //build JSON array
+  $app_list = array(array("id" => 1, "name" => "Web Demo"), array("id" => 2, "name" => "Audio Countdown"), array("id" => 3, "name" => "The Tab Key"), array("id" => 4, "name" => "Music Sleep Timer")); 
+
+  return $app_list;
+}
+
+$possible_url = array("get_app_list", "get_app");
+
+$value = "An error has occurred";
+
+if (isset($_GET["action"]) && in_array($_GET["action"], $possible_url))
+{
+  switch ($_GET["action"])
+    {
+      case "get_app_list":
+        $value = get_app_list();
+        break;
+      case "get_app":
+        if (isset($_GET["id"]))
+          $value = get_app_by_id($_GET["id"]);
+        else
+          $value = "Missing argument";
+        break;
+    }
+}
+
+//return JSON array
+exit(json_encode($value));
+?>
