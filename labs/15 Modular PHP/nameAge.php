@@ -38,7 +38,7 @@
 	function randomWord() {
 		$file = file_get_contents("http://www.webstepbook.com/words.txt");
 		$lines = explode("\n", $file);
-		$words = explode("	", $lines[rand(0, count($lines) - 1)]);
+		$words = explode("\t", $lines[rand(0, count($lines) - 1)]);
 		return $words[0];
 	}
 	

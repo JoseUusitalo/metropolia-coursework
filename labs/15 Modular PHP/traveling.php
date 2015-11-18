@@ -16,7 +16,7 @@
 			private $sOwner = "null";
 			private $dBalance = 0.0;
 
-			public function __contruct($sOwnerName) {
+			public function __construct($sOwnerName) {
 				print("New travel card. The owner is $sOwnerName.<br>");
 				$this->sOwner = $sOwnerName;
 				$this->dBalance = 0.0;
