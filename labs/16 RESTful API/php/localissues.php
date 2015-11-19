@@ -16,7 +16,10 @@ if (isset($_GET['location']) && isset($_GET['radius'])) {
 	$stuff = array();
 	for($i = 0; $i < count($palaute_array); $i+=1) {
 			$desc = $palaute_array[$i]['description'];
-			$add = $palaute_array[$i]['address'];
+			$add = "Ei osoitetta";
+			if (!empty($palaute_array[$i]['address'])) {
+					$add = $palaute_array[$i]['address'];
+				}	
 			$type = $palaute_array[$i]['service_name'];        
 			array_push($stuff, array($add, $type, $desc));
 		}

@@ -5,11 +5,13 @@
 		<title>Lucky Number and Word</title>
 	</head>
 	<body>
-		<form action="" method="">
-			<button type="submit">Get Lucky!</button>
+		<form action="" method="post">
+			<button type="submit" name="submit">Get Lucky!</button>
 		</form>
 		<br/>
 		<?php
+		function display()
+		{
 			$server = $_SERVER['HTTP_HOST'];
 
 			$urladdress = 'http://' . $server . '/16_API/lucky/';
@@ -18,6 +20,11 @@
 			print("Number: " . $luckyArray['number']);
 			print("<br>");
 			print("Word: " . $luckyArray['word']);
+		}
+		if(isset($_POST['submit']))
+		{
+		   display();
+		} 
 		?>
 	</body>
 </html>
