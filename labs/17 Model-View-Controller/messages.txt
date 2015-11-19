@@ -1,0 +1,14 @@
+11:56:06: wooo
+11:56:12: cool.
+11:56:37: html<br>test<strong>hahaa</strong>
+11:57:40: stuff\nnewline
+11:57:46: null\0test
+11:57:49: 
+11:57:50: 
+12:14:33: hahaa — hihii
+12:15:39: hahaa: wooo
+12:15:53: hohoo: hehee
+[12:17:25] asd: test
+[12:55:22] asd: aaaaa
+[12:55:26] asd: 
+[12:55:31] asd: 123123123
