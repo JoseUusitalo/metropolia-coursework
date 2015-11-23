@@ -1,6 +1,6 @@
 11:56:06: wooo
 11:56:12: cool.
-11:56:37: html<br>test<strong>hahaa</strong>
+11:56:37: html<br>test <strong>hahaa</strong>
 11:57:40: stuff\nnewline
 11:57:46: null\0test
 11:57:49: 
@@ -12,6 +12,7 @@
 [12:55:22] asd: aaaaa
 [12:55:26] asd: 
 [12:55:31] asd: 123123123
-[11:12:01] asdasd: aaaaaaaaaaaa
-[11:13:29] a a a %&/() sed: aSD
-[11:14:02] <script>alert()</script>: asd
+[11:04:52] Hemmo: <p>hötömölö</p>
+<strong>toimii!</strong><br><br>
+vika rivi
+[11:16:28] asd: 12312313
