@@ -40,12 +40,12 @@ class Myapi extends REST_Controller {
 		$this->response($person, REST_Controller::HTTP_OK);
     }
 
-    public function person_post()
+    public function person_post($id, $firstname, $lastname)
     {
 		$data = [
-			'id' => $this->post('id'),
-            'first' => $this->post('firstname'),
-            'last' => $this->post('lastname')
+			'id' => (int) $id,
+            'first' => $firstname,
+            'last' => $lastname
         ];
 		
 		$this->response($data, REST_Controller::HTTP_OK);

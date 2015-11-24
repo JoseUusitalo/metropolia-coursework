@@ -76,16 +76,16 @@ class Example extends REST_Controller {
         }
     }
 
-    public function news_post()
+    public function news_post($title, $text)
     {
 		$this->load->helper('url');
 
-		$slug = url_title($this->post('title'), 'dash', TRUE);
+		$slug = url_title($title, 'dash', TRUE);
 
 		$data = array(
-			'title' => $this->post('title'),
+			'title' => $title,
 			'slug' => $slug,
-			'text' => $this->post('text')
+			'text' => $text
 		);
 
 		$this->db->insert('news', $data);
