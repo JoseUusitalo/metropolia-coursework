@@ -50,6 +50,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 
+$route['Persons/(:any)'] = 'Persons/$1';
+$route['Persons'] = 'Persons';
+
 $route['chat/write'] = 'chat/write';
 $route['chat'] = 'chat';
 
@@ -59,3 +62,6 @@ $route['news'] = 'news';
 
 $route['(:any)'] = 'pages/view/$1';
 $route['default_controller'] = 'pages/view';
+
+$route['api/newsexample/news/(:num)'] = 'api/newsexample/news/id/$1'; // Example 4
+$route['api/newsexample/news/(:num)(\.)([a-zA-Z0-9_-]+)(.*)'] = 'api/example/news/id/$1/format/$3$4'; // Example 8
