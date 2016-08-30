@@ -19,7 +19,6 @@ interface Vacation
 	public boolean moveVacation(Date start, Date end);
 }
 
-@SuppressWarnings("hiding")
 class RealVacation implements Vacation
 {
 	private Person person;
@@ -60,7 +59,6 @@ class RealVacation implements Vacation
 	}
 }
 
-@SuppressWarnings({ "static-method", "hiding", "unused" })
 class ProxyVacation implements Vacation
 {
 	private RealVacation vacation;
