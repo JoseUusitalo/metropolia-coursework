@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			targetNamespace="https://users.metropolia.fi"
+			xmlns="https://users.metropolia.fi"
+			elementFormDefault="qualified">
+
+	<xsd:simpleType name="sex">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="male" />
+			<xsd:enumeration value="female" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:element name="firstName" type="xsd:string" />
+
+	<xsd:element name="middleName">
+		<xsd:complexType>
+			<xsd:simpleContent>
+				<xsd:extension base="xsd:string">
+					<xsd:attribute name="order" type="xsd:int" />
+				</xsd:extension>
+			</xsd:simpleContent>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="lastName" type="xsd:string" />
+
+	<xsd:element name="person">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element minOccurs="1" maxOccurs="1" ref="firstName" />
+				<xsd:element minOccurs="0" maxOccurs="unbounded" ref="middleName" />
+				<xsd:element minOccurs="1" maxOccurs="1" ref="lastName" />
+			</xsd:sequence>
+			<xsd:attribute name="sex" type="sex" />
+		</xsd:complexType>
+	</xsd:element>
+		<xsd:element name="parents">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element minOccurs="1" maxOccurs="unbounded" ref="person" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="children">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element minOccurs="1" maxOccurs="unbounded" ref="person" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="family">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element minOccurs="1" ref="parents" />
+				<xsd:element minOccurs="1" ref="children" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+</xsd:schema>

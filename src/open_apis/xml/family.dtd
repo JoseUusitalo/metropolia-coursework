@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!ELEMENT family ( parents, children ) >
+<!ELEMENT parents ( person+ ) >
+<!ELEMENT children ( person+ ) >
+<!ELEMENT person ( firstName, middleName*, lastName ) >
+<!ATTLIST person sex ( male | female ) #REQUIRED >
+<!ELEMENT firstName ( #PCDATA ) >
+<!ELEMENT middleName ( #PCDATA ) >
+<!ATTLIST middleName order CDATA #REQUIRED >
+<!ELEMENT lastName ( #PCDATA ) >

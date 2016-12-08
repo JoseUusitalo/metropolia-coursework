@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE family SYSTEM "family.dtd">
+<family>
+	<parents>
+		<person sex="male">
+			<firstName>Erkki</firstName>
+			<lastName>Esimerkki</lastName>
+		</person>
+		<person sex="female">
+			<firstName>Elina</firstName>
+			<middleName order="0">Alina</middleName>
+			<middleName order="1">Solina</middleName>
+			<lastName>Esimerkki</lastName>
+		</person>
+	</parents>
+	<children>
+		<person sex="female">
+			<firstName>Eerika</firstName>
+			<middleName order="0">Erin</middleName>
+			<lastName>Esimerkki</lastName>
+		</person>
+		<person sex="female">
+			<firstName>Essi</firstName>
+			<lastName>Esimerkki</lastName>
+		</person>
+	</children>
+</family>

@@ -1,0 +1,24 @@
+{
+  "employees": [
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "workPhone": "123-9001234",
+      "address": "Streetroad 1"
+    },
+    {
+      "firstName": "Anna",
+      "lastName": "Smith",
+      "workPhone": "001-1920304",
+      "homePhone": "456-1231223",
+      "address": "Thiswaylane 44"
+    },
+    {
+      "firstName": "Peter",
+      "lastName": "Jones",
+      "workPhone": "101-9990002",
+      "homePhone": "100-0010101",
+      "address": "Broadway 409 B"
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>City Bike Availability</title>
+    <style>
+        tbody tr:nth-child(odd) {
+            background-color: #eee;
+        }
+    </style>
+</head>
+<body>
+<table id="biketable" cellpadding="5">
+    <thead>
+    <tr>
+        <th>Station</th>
+        <th>Bikes Available</th>
+        <th>Free Bike Spaces</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+<script>
+    var xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            showTable(JSON.parse(xhr.responseText));
+        }
+    };
+
+    xhr.open('GET', 'http://api.digitransit.fi/routing/v1/routers/hsl/bike_rental');
+    xhr.send();
+
+    function showTable(json) {
+        var bodyRows = document.getElementById('biketable').children[1];
+        var stations = json.stations;
+        var length = stations.length;
+        var idx, station, bikes, spaces;
+        var totalBikes = 0;
+        var totalSpaces = 0;
+
+        for (idx = 0; idx < length; idx++) {
+            station = stations[idx];
+            bikes = station.bikesAvailable;
+            spaces = station.spacesAvailable;
+            totalBikes += bikes;
+            totalSpaces += spaces;
+
+            bodyRows.innerHTML += '<tr><td>' + station.name + '</td>' +
+                    '<td>' + bikes + '</td>' +
+                    '<td>' + spaces + '</td></tr>';
+        }
+
+        bodyRows.innerHTML += '<tr><th>Total:</th>' +
+                '<td>' + totalBikes + '</td>' +
+                '<td>' + totalSpaces + '</td></tr>';
+    }
+</script>
+</body>
+</html>

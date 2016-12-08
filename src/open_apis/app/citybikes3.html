@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>City Bike Availability</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+
+        #map {
+            height: 100%;
+        }
+
+        #container {
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 1;
+            padding: 1em;
+
+            box-shadow: 0.25em -0.25em 2em darkgray;
+
+            background: -moz-linear-gradient(top, #ffffff 0%, #eeeeee 100%); /* FF3.6-15 */
+            background: -webkit-linear-gradient(top, #ffffff 0%, #eeeeee 100%); /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(to bottom, #ffffff 0%, #eeeeee 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        }
+
+        #bikeSelectorBox select {
+            width: 100%;
+            font-size: 1em;
+        }
+
+        #biketable, #weatherTable {
+            padding: 0;
+            text-align: center;
+            margin: 0.5em auto 0 auto;
+        }
+
+        .smallTitle {
+            font-size: 0.85em;
+            font-weight: normal;
+            vertical-align: middle;
+        }
+
+        #biketable td,
+        #weatherTemp,
+        #weatherWind {
+            font-size: 1.2em;
+            font-weight: normal;
+        }
+
+        .big {
+            font-size: 2em;
+            font-weight: normal;
+            position: relative;
+            top: 0.4em;
+            padding: 0 0.25em 0 0.1em;
+            line-height: 0;
+        }
+
+        #weatherIconBg {
+            width: 60px;
+            height: 60px;
+            padding: 0 !important;
+            margin: 0 !important;
+            display: flex;
+            vertical-align: middle;
+            text-align: center;
+
+            background-color: white;
+            border-radius: 100%;
+        }
+
+        #weatherIcon {
+            display: block;
+            padding: 0 !important;
+            margin: 0 auto 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="bikeSelectorBox" style="display: none;">
+        <select id="bikeSelect" onChange="changeStation()"></select>
+        <table id="biketable" cellpadding="5" border="0">
+            <thead>
+            <tr>
+                <th class="smallTitle">Available Bikes</th>
+                <th class="smallTitle">Free Spaces</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td id="available">-</td>
+                <td id="slots">-</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <hr/>
+    <div id="weatherBox" style="display: none;">
+        <table id="weatherTable" cellpadding="5" border="0">
+            <thead>
+            <tr>
+                <th id="areaName" colspan=2>-</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td id="weatherIconBg"><img id="weatherIcon" src=""/></td>
+                <td id="weatherTemp">-</td>
+            </tr>
+            <tr>
+                <th class="smallTitle">Wind</th>
+                <td id="weatherWind">-</td>
+            </tr>
+            <tr>
+                <td id="weatherDesc" colspan=2>-</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div id="map"></div>
+<script>
+    var map;
+    var select = document.getElementById('bikeSelect');
+    var available = document.getElementById('available');
+    var slots = document.getElementById('slots');
+
+    function getStations(json) {
+        var stations = json.stations;
+        var length = stations.length;
+        var idx, station;
+
+        for (idx = 0; idx < length; idx++) {
+            station = stations[idx];
+            select.options.add(new Option(station.name, station.id));
+        }
+
+        changeStation();
+        document.getElementById('bikeSelectorBox').removeAttribute('style');
+    }
+
+    function setStation(json, stationID) {
+        var stations = json.stations;
+        var length = stations.length;
+        var idx, station;
+
+        for (idx = 0; idx < length; idx++) {
+            station = stations[idx];
+            if (station.id === stationID) {
+                available.innerHTML = station.bikesAvailable;
+                slots.innerHTML = station.spacesAvailable;
+
+                var latLng = {lat: station.y, lng: station.x};
+
+                map.setCenter(latLng);
+                getWeather(station.y, station.x);
+
+                var marker = new google.maps.Marker({
+                    position: latLng,
+                    map: map
+                });
+
+                break;
+            }
+        }
+    }
+
+    function changeStation() {
+        var xhr = new XMLHttpRequest();
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                setStation(JSON.parse(xhr.responseText), select.value);
+            }
+        };
+
+        xhr.open('GET', 'http://api.digitransit.fi/routing/v1/routers/hsl/bike_rental');
+        xhr.send();
+    }
+
+    function initMap() {
+        var lati = 60.16985569999999;
+        var long = 24.93837899999994;
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: lati, lng: long},
+            zoom: 17
+        });
+
+        var xhr = new XMLHttpRequest();
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                getStations(JSON.parse(xhr.responseText));
+                getWeather(lati, long);
+            }
+        };
+
+        xhr.open('GET', 'http://api.digitransit.fi/routing/v1/routers/hsl/bike_rental');
+        xhr.send();
+    }
+
+    function showWeatherData(json) {
+        document.getElementById('areaName').innerHTML = json.name;
+        document.getElementById('weatherIcon').src = 'http://openweathermap.org/img/w/' + json.weather[0].icon + '.png';
+        document.getElementById('weatherDesc').innerHTML = '<i><span class="big">“</span>' + json.weather[0].description + '<span class="big">”</span></i>';
+        document.getElementById('weatherTemp').innerHTML = (json.main.temp - 273.15).toFixed(1) + '°C';
+        document.getElementById('weatherWind').innerHTML = json.wind.speed.toFixed(1) + ' m/s';
+    }
+
+
+    function getWeather(latitude, longitude) {
+        var xhr = new XMLHttpRequest();
+        var yourAppID = 'appid';
+        var uri = 'http://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&APPID=' + yourAppID;
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                document.getElementById('weatherBox').removeAttribute('style');
+                showWeatherData(JSON.parse(xhr.responseText));
+            }
+        };
+
+        xhr.open('GET', uri);
+        xhr.send();
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<yourApiKey>&callback=initMap" async
+        defer></script>
+</body>
+</html>

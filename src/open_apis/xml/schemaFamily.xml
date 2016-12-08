@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<family xmlns="TX00CK72"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="https://users.metropolia.fi https://users.metropolia.fi/~joseu/TX00CK72-3001/family.xsd">
+	<parents>
+		<person sex="male">
+			<firstName>Erkki</firstName>
+			<lastName>Esimerkki</lastName>
+		</person>
+		<person sex="female">
+			<firstName>Elina</firstName>
+			<middleName order="0">Alina</middleName>
+			<middleName order="1">Solina</middleName>
+			<lastName>Esimerkki</lastName>
+		</person>
+	</parents>
+	<children>
+		<person sex="female">
+			<firstName>Eerika</firstName>
+			<middleName order="0">Erin</middleName>
+			<lastName>Esimerkki</lastName>
+		</person>
+		<person sex="female">
+			<firstName>Essi</firstName>
+			<lastName>Esimerkki</lastName>
+		</person>
+	</children>
+</family>
